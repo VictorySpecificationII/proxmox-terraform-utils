@@ -1,5 +1,5 @@
 # proxmox-terraform-utils
-Script utilities to help with setting up Terraform on Proxmox and creating templates
+Script utilities to help with setting up Terraform on Proxmox and creating templates.
 
 # Usage
 
@@ -11,3 +11,8 @@ For every standalone node you have, you need to run the script individually.
 ## Creating templates for Terraform Infra
 
 Modify the file accordingly and run it.
+
+
+## To:do
+
+Copy .tf files from experiment to repository.
