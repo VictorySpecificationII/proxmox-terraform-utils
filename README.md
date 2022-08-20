@@ -10,13 +10,7 @@ For every standalone node you have, you need to run the script individually.
 
 ## Creating templates for Terraform Infra
 
-Modify the file accordingly and run it.
-
-
-## To:do
-
-Copy .tf files from experiment to repository.
-
+Modify the create-template.sh file accordingly and run it.
 
 ## For PVE-Exporter:
 
@@ -24,16 +18,8 @@ Copy .tf files from experiment to repository.
 
 ./install-pve-exporter.sh
 
-1. Append the following to your prometheus.yml file
-
-  - job_name: 'pve-exporter'
-    static_configs:
-      - targets:
-        - localhost:9221 #IP of PVE server
-    metrics_path: /pve
-    params:
-      module: [default]
-
+1. Modify your Prometheus file based on the file in this repository.
+ 
 2. Restart Prometheus Metrics Server
 
 systemctl restart prometheus
