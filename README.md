@@ -30,6 +30,6 @@ systemctl restart prometheus
 
 
 
-# Prometheus Configuration
+## Prometheus Configuration
 
 Rudimentary prometheus.yml that includes a job to scrape metrics from the PVE exporters.
