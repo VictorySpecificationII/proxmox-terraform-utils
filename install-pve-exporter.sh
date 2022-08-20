@@ -8,7 +8,7 @@ pveum aclmod / -user pve-exporter@pve -role PVEAuditor
 useradd -c "pve exporter" -m -s /bin/false pve-exporter
 
 echo "Installing dependencies..."
-apt-get update && apt-get install python3-venv python3-setuptools python3-dev python3-pip libffi-dev libssl-dev build-essential -y
+apt-get update --allow-unauthenticated && apt-get install python3-venv python3-setuptools python3-dev python3-pip libffi-dev libssl-dev build-essential -y
 
 echo "Creating Python virtual environment..."
 python3 -m venv /opt/prometheus-pve-exporter
