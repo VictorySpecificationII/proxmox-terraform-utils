@@ -41,3 +41,9 @@ systemctl restart prometheus
 3. If needed, uninstall by running
 
 ./remove-pve-exporter.sh
+
+
+
+# Prometheus Configuration
+
+Rudimentary prometheus.yml that includes a job to scrape metrics from the PVE exporters.
