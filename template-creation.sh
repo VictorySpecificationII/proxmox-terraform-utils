@@ -28,8 +28,8 @@ qm set 9000 --serial0 socket --vga serial0
 qm set 9000 --agent enabled=1
 
 # Networking section
-# qm set 999 --ipconfig0 ip=10.98.1.200/8,gw=10.98.1.1
-qm set 999 --ipconfig0 ip=dhcp
+# qm set 9000 --ipconfig0 ip=10.98.1.200/8,gw=10.98.1.1
+qm set 9000 --ipconfig0 ip=dhcp
 
 qm template 9000
 rm focal-server-cloudimg-amd64.img
