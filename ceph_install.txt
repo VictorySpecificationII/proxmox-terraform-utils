@@ -1,0 +1,26 @@
+#source: https://pve.proxmox.com/pve-docs/chapter-pveceph.html
+
+prerequisites: setup infiniband NICs with an IP
+
+install ceph
+
+# on all nodes
+pveceph install
+
+# on one node
+pveceph init --network 10.191.1.0/24
+
+# on each node
+pveceph mon create -mon-address 10.191.1.3 # whatever ip the CEPH NIC has on each node
+pveceph mon create -mon-address 10.191.1.4 # whatever ip the CEPH NIC has on each node
+pveceph mon create -mon-address 10.191.1.5 # whatever ip the CEPH NIC has on each node
+
+# on each node
+pveceph mgr create
+pveceph mgr create
+pveceph mgr create
+
+todo after buying ssd's for storage
+
+create OSD's
+create PG's

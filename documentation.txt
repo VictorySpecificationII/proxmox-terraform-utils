@@ -1,0 +1,8 @@
+Sources
+
+Basic Infiniband Pinging | https://www.youtube.com/watch?v=ga7hAaTmi58
+NFS-over-RDMA | https://tech-jungle.com/setting-up-proxmox-with-shared-storage-over-
+Terraform Cluster Setup | https://cloudalbania.com/posts/2022-01-homelab-with-proxmox-and-terraform/
+Docs | https://pve.proxmox.com/pve-docs/pveum.1.html
+NFS Issues | https://unix.stackexchange.com/questions/106122/mount-nfs-access-denied-by-server-while-mounting-on-ubuntu-machines
+Ceph | https://pve.proxmox.com/pve-docs/chapter-pveceph.html
