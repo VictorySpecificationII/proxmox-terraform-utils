@@ -9,6 +9,7 @@ rm focal-server-cloudimg-amd64.img
 # uncomment based on the image you want to pull, bear in mind you will have to modify the script accordingly
 wget https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.img #ubuntu 20.04
 # wget https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img #ubuntu 22.04
+# wget https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-11.5.0-amd64-netinst.iso #debian11
 
 
 virt-customize -a focal-server-cloudimg-amd64.img --install qemu-guest-agent
