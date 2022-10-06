@@ -6,3 +6,6 @@ Terraform Cluster Setup | https://cloudalbania.com/posts/2022-01-homelab-with-pr
 Docs | https://pve.proxmox.com/pve-docs/pveum.1.html
 NFS Issues | https://unix.stackexchange.com/questions/106122/mount-nfs-access-denied-by-server-while-mounting-on-ubuntu-machines
 Ceph | https://pve.proxmox.com/pve-docs/chapter-pveceph.html
+Debian Cloud Template PVE | https://blog.stefandroid.com/2021/07/02/proxmox-debian-cloud-init-template.html
+Terraform PVE Provisioning | https://austinsnerdythings.com/2021/09/01/how-to-deploy-vms-in-proxmox-with-terraform/
+Ubuntu Cloud Template PVE | https://austinsnerdythings.com/2021/08/30/how-to-create-a-proxmox-ubuntu-cloud-init-image/
