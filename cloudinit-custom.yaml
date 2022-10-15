@@ -1,0 +1,11 @@
+#cloud-config
+users:
+  - name: ubuntu
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+ssh_pwauth: True ## This line enables ssh password authentication
+chpasswd:
+  list: |
+    ubuntu:ubuntu ## Overriding default username, password
+  expire: False ## True to force user to change the default password at first login
+
