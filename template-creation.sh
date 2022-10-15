@@ -13,14 +13,14 @@ wget https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.i
 
 
 virt-customize -a jammy-server-cloudimg-amd64.img  --install qemu-guest-agent
-virt-customize -a jammy-server-cloudimg-amd64.img  --ssh-inject root:file:/root/.ssh/id_rsa.pub
-virt-customize -a jammy-server-cloudimg-amd64.img  --run-command 'sed -i "/#PasswordAuthentication yes/s/^# //g" /etc/ssh/sshd_config'
-virt-customize -a jammy-server-cloudimg-amd64.img  --run-command 'sed -i "s/PasswordAuthentication no/PasswordAuthentication yes/g" /etc/ssh/sshd_config'
+#virt-customize -a jammy-server-cloudimg-amd64.img  --ssh-inject root:file:/root/.ssh/id_rsa.pub
+#virt-customize -a jammy-server-cloudimg-amd64.img  --run-command 'sed -i "/#PasswordAuthentication yes/s/^# //g" /etc/ssh/sshd_config'
+#virt-customize -a jammy-server-cloudimg-amd64.img  --run-command 'sed -i "s/PasswordAuthentication no/PasswordAuthentication yes/g" /etc/ssh/sshd_config'
 
 # Create devops user with SSH key - somehow broken?
 # virt-sysprep -a focal-server-cloudimg-amd64.img --run-command 'useradd devops' 
 # virt-customize -a jammy-server-cloudimg-amd64.img --firstboot-command 'useradd -m -p "" devops ; chage -d 0 devops' #uncomment and comment below line to enforce new password 
-virt-customize -a jammy-server-cloudimg-amd64.img --run-command 'useradd -m -p "" devops'
+#virt-customize -a jammy-server-cloudimg-amd64.img --run-command 'useradd -m -p "" devops'
 
 # Unlock root account - not recommended but good for testing
 virt-customize -a jammy-server-cloudimg-amd64.img --root-password password:ubuntu
@@ -32,6 +32,19 @@ qm set 9003 --boot c --bootdisk scsi0
 qm set 9003 --ide2 local-lvm:cloudinit
 qm set 9003 --serial0 socket --vga serial0
 qm set 9003 --agent enabled=1
+
+#get custom cloud-init file
+wget https://raw.githubusercontent.com/VictorySpecificationII/proxmox-terraform-utils/main/cloudinit-custom.yaml
+
+
+mv cloudinit-custom.yaml 9003.yaml
+
+#Move cloudinit custom file to VM dir
+mv 9003.yaml /var/lib/vz/snippets/9003.yaml
+
+#Attach custom cloudinit file to VM
+qm set 9003 --cicustom "user=local:snippets/9003.yaml"
+
 
 # Networking section
 # qm set 9003 --ipconfig0 ip=10.98.1.200/8,gw=10.98.1.1
