@@ -33,3 +33,12 @@ systemctl restart prometheus
 ## Prometheus Configuration
 
 Rudimentary prometheus.yml that includes a job to scrape metrics from the PVE exporters.
+
+
+## Custom Cloud-Init
+
+Assuming you have used a cloud-init image to create your VM with:
+
+ - Save the file at /var/lib/vz/snippets/<NUMERICAL_ID_OF_YOUR_VM_ID>.yaml then attach it like qm set NUMERICAL_ID_OF_YOUR_VM_ID --cicustom "user=local:snippets/NUMERICAL_ID_OF_YOUR_VM_ID.yaml"
+
+ - Reboot that VM
