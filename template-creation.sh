@@ -25,35 +25,36 @@ virt-customize -a jammy-server-cloudimg-amd64.img  --install qemu-guest-agent
 # Unlock root account - not recommended but good for testing
 virt-customize -a jammy-server-cloudimg-amd64.img --root-password password:ubuntu
 
-qm create 9003 --name "cloudinit-ubuntu-2204" --memory 2048 --cores 2 --net0 virtio,bridge=vmbr0
-qm importdisk 9003 jammy-server-cloudimg-amd64.img  local-lvm
-qm set 9003 --scsihw virtio-scsi-pci --scsi0 local-lvm:vm-9003-disk-0
-qm set 9003 --boot c --bootdisk scsi0
-qm set 9003 --ide2 local-lvm:cloudinit
-qm set 9003 --serial0 socket --vga serial0
-qm set 9003 --agent enabled=1
+qm create 1000 --name "cloudinit-ubuntu-2204" --memory 2048 --cores 2 --net0 virtio,bridge=vmbr0
+qm importdisk 1000 jammy-server-cloudimg-amd64.img  local-lvm
+qm set 1000 --scsihw virtio-scsi-pci --scsi0 local-lvm:vm-1000-disk-0
+qm set 1000 --boot c --bootdisk scsi0
+qm set 1000 --ide2 local-lvm:cloudinit
+qm set 1000 --serial0 socket --vga serial0
+qm set 1000 --agent enabled=1
+qm resize 1000 scsi0 +14G 
 
 #get custom cloud-init file
-wget https://raw.githubusercontent.com/VictorySpecificationII/proxmox-terraform-utils/main/cloudinit-custom.yaml
+#wget https://raw.githubusercontent.com/VictorySpecificationII/proxmox-terraform-utils/main/cloudinit-custom.yaml
 
 
-mv cloudinit-custom.yaml 9003.yaml
+#mv cloudinit-custom.yaml 1000.yaml
 
 #Move cloudinit custom file to VM dir
-mv 9003.yaml /var/lib/vz/snippets/9003.yaml
+#mv 1000.yaml /var/lib/vz/snippets/1000.yaml
 
 #Attach custom cloudinit file to VM
-qm set 9003 --cicustom "user=local:snippets/9003.yaml"
+#qm set 1000 --cicustom "user=local:snippets/1000.yaml"
 
 
 # Networking section
-# qm set 9003 --ipconfig0 ip=10.98.1.200/8,gw=10.98.1.1
-qm set 9003 --ipconfig0 ip=dhcp
+# qm set 1000 --ipconfig0 ip=10.98.1.200/8,gw=10.98.1.1
+qm set 1000 --ipconfig0 ip=dhcp
 
 # Set SSH key
-#qm set 9003 --sshkey ~/.ssh/id_rsa.pub
+#qm set 1000 --sshkey ~/.ssh/id_rsa.pub
 
-qm template 9003
+qm template 1000
 rm jammy-server-cloudimg-amd64.img 
 echo "NOTE: Next up, clone VM, then expand the disk."
 echo "NOTE: You also still need to copy ssh keys to the newly cloned VM."
