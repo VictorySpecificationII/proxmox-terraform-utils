@@ -4,7 +4,7 @@
 
 #ONLY RUN when all nodes are in a cluster
 
-pveum role add TerraformProv --privsep=0 -privs "VM.Allocate VM.Clone VM.Config.CDROM VM.Config.CPU VM.Config.Cloudinit VM.Config.Disk VM.Config.HWType VM.Config.Memory VM.Config.Network VM.Config.Options VM.Monitor VM.Audit VM.PowerMgmt Datastore.AllocateSpace Datastore.Audit"
+pveum role add TerraformProv -privs "VM.Allocate VM.Clone VM.Config.CDROM VM.Config.CPU VM.Config.Cloudinit VM.Config.Disk VM.Config.HWType VM.Config.Memory VM.Config.Network VM.Config.Options VM.Monitor VM.Audit VM.PowerMgmt Datastore.AllocateSpace Datastore.Audit"
 pveum user add terraform-prov@pve --password 3dMLf5CgFfcDod
 pveum aclmod / -user terraform-prov@pve -role TerraformProv
-pveum user token add terraform-prov@pve tf-vm-provisioner >> api_token.txt
+pveum user token add terraform-prov@pve tf-vm-provisioner --privsep=0 >> api_token.txt
