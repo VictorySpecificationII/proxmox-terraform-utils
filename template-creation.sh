@@ -32,7 +32,16 @@ qm set 1000 --boot c --bootdisk scsi0
 qm set 1000 --ide2 local-lvm:cloudinit
 qm set 1000 --serial0 socket --vga serial0
 qm set 1000 --agent enabled=1
-qm resize 1000 scsi0 +14G 
+
+
+# Standard template size is 2GB
+#if you want to resize the template go ahead, uncomment and modify the last number inside this command
+#BEWARE:  Proxmox does NOT SUPPORT downsizing volumes on VM creation so your Terraform script will fail with an error that looks like this:
+
+# Error: Proxmox does not support decreasing disk size. Disk 'scsi0' wanted to go from '16.19921875G' to '10G'
+
+#qm resize 1000 scsi0 +14G 
+
 
 #get custom cloud-init file
 #wget https://raw.githubusercontent.com/VictorySpecificationII/proxmox-terraform-utils/main/cloudinit-custom.yaml
